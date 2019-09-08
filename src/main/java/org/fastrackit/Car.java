@@ -1,15 +1,8 @@
 package org.fastrackit;
-
-public class Car {
-    String name;
-    Double mileage;
-    Double maxSpeed;
-    String fuelType;
-    double fuelLevel;
-    double traveleDistance;
+//mostenirea (is-a relationship)
+public class Car extends AutoVehicle{
     int doorCount;
-    boolean running;
-    Engine engine;
+  // has -a relationship
 
 
 
