@@ -36,6 +36,7 @@ public class App {
         System.out.println("Car2 name:" + car2.getName());
         System.out.println("Car1 name:" + car.getName());
         System.out.println(car.getTraveleDistance());
+        System.out.println(car.isRunning());
 
 //        System.out.println("Static variables example");
 //        // we should only call static variables from the clas itself (Car),
