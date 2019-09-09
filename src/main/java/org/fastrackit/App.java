@@ -17,8 +17,11 @@ public class App {
         car.setMaxSpeed(180.1);
         car.setFuelType( "Gasoline");
 
+        System.out.println("Car object:" + car.toString());
+
 
         System.out.println(car.getName());
+        System.out.println(car.getTraveleDistance());
         System.out.println(car.isRunning());
         System.out.println(car.engine);
 
@@ -35,8 +38,7 @@ public class App {
         //concatenation
         System.out.println("Car2 name:" + car2.getName());
         System.out.println("Car1 name:" + car.getName());
-        System.out.println(car.getTraveleDistance());
-        System.out.println(car.isRunning());
+
 
 //        System.out.println("Static variables example");
 //        // we should only call static variables from the clas itself (Car),
@@ -48,6 +50,12 @@ public class App {
 //        System.out.println("total count in car2:" + car2.totalCount);
 //        System.out.println("total count in car2 class:" + car.totalCount);
 
+        HybridCar hybridCar = new HybridCar();
+        hybridCar.setName("Cheater");
+
+        hybridCar.accelerate( 60,1 );
+        System.out.println("Fuel level:" + hybridCar.getFuelLevel());
+        System.out.println("Traveled distance:" + hybridCar.getTraveleDistance());
 
 
     }
