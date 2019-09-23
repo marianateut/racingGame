@@ -1,7 +1,9 @@
 package org.fastrackit;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Game {
@@ -18,7 +20,7 @@ public class Game {
         initializeCompetitors();
     }
     private void initializeCompetitors() {
-        int competitorCount = 2;
+        int competitorCount = getCompetitorCountFromUser();
 
         System.out.println("Today 's competitors are: ");
 
@@ -36,6 +38,19 @@ public class Game {
         }
 
     }
+    private int getCompetitorCountFromUser(){
+        System.out.println("Please enter number of player");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            return scanner.nextInt();
+        } catch (InputMismatchException e){
+            throw new RuntimeException("You have entered an invalid number.");
+        }finally {
+            System.out.println("Finally block is always executed.");
+        }
+
+    }
+
 
     private void initializeTracks() {
         Track track1 = new Track();
