@@ -21,12 +21,29 @@ public class Game {
         Track selectedTrack = getSelectedTrackFromUser();
 
         initializeCompetitors();
-        // for-each or enhanced for loop
-        for (Vehicle vehicle : competitors) {
-            double speed = getAccelerationSpeedFromUser();
-            vehicle.accelerate(60, 1);
-        }
 
+        boolean winnerNotKnown = true;
+        int competitorsWithoutFuel = 0;
+
+
+        while (winnerNotKnown) {
+
+            // for-each or enhanced for loop
+            for (Vehicle vehicle : competitors) {
+                double speed = getAccelerationSpeedFromUser();
+                vehicle.accelerate(60, 1);
+
+                if (selectedTrack.getLength() <= vehicle.getTraveleDistance()) {
+                    winnerNotKnown = false;
+                    System.out.println("The winner is :" + vehicle.getName());
+                    break;
+
+                }
+                if (vehicle.getFuelLevel() <= 0) {
+                    competitorsWithoutFuel++;
+                }
+            }
+        }
 
     }
 
@@ -39,7 +56,7 @@ public class Game {
 
         } catch (InputMismatchException e) {
             System.out.println("You have entered an invalid number.");
-           return getAccelerationSpeedFromUser();
+            return getAccelerationSpeedFromUser();
         }
     }
 
@@ -50,9 +67,9 @@ public class Game {
 
 
         try {
-           int userChoice = scanner.nextInt();
-            return tracks [userChoice -1];
-        } catch (InputMismatchException | ArrayIndexOutOfBoundsException e){
+            int userChoice = scanner.nextInt();
+            return tracks[userChoice - 1];
+        } catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
             System.out.println("You have entered an invalid number.");
             //recursion  -a method calling itself
             return getSelectedTrackFromUser();
@@ -60,7 +77,6 @@ public class Game {
 
 
     }
-
 
 
     private void initializeCompetitors() throws Exception {
@@ -72,7 +88,7 @@ public class Game {
             Vehicle competitor = new Vehicle();
             competitor.setName(" Competitor " + i);
             competitor.setMaxSpeed(300.00);
-            competitor.setMileage(ThreadLocalRandom.current().nextDouble(6,12));
+            competitor.setMileage(ThreadLocalRandom.current().nextDouble(6, 12));
             competitor.setFuelLevel(80);
 
             System.out.println(competitor);
@@ -82,14 +98,15 @@ public class Game {
         }
 
     }
+
     private int getCompetitorCountFromUser() throws Exception {
         System.out.println("Please enter number of player");
         Scanner scanner = new Scanner(System.in);
         try {
             return scanner.nextInt();
-        } catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             throw new Exception("You have entered an invalid number.");
-        }finally {
+        } finally {
             System.out.println("Finally block is always executed.");
         }
 
